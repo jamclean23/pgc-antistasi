@@ -9,7 +9,7 @@
     ["C_Tractor_01_F", ["rebCost", 400]],
 
     // Unarmed armored hilux
-    ["CUP_I_Hilux_armored_unarmed_NAPA", ["rebCost", 3000]],
+    ["CUP_I_Hilux_armored_unarmed_NAPA", ["rebCost", 1000]],
 
     // Sub
     ["I_SDV_01_F", ["rebCost", 500]],
