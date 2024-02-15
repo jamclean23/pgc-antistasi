@@ -188,21 +188,21 @@ class Params
         title = $STR_A3AU_stamina_enabled;
         values[] = {0,1};
         texts[] = {$STR_antistasi_dialogs_generic_button_no_text,$STR_antistasi_dialogs_generic_button_yes_text};
-        default = 1;
+        default = 0;
     };
     class fatigueEnabled
     {
         title = $STR_A3AU_fatigue_enabled;
         values[] = {0,1};
         texts[] = {$STR_antistasi_dialogs_generic_button_no_text,$STR_antistasi_dialogs_generic_button_yes_text};
-        default = 1;
+        default = 0;
     };
     class swayEnabled
     {
         title = $STR_A3AU_sway_enabled;
         values[] = {0,1};
         texts[] = {$STR_antistasi_dialogs_generic_button_no_text,$STR_antistasi_dialogs_generic_button_yes_text};
-        default = 1;
+        default = 0;
     };
 
     class Spacer60
