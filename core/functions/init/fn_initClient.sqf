@@ -568,7 +568,7 @@ mapX addAction [localize "STR_antistasi_actions_ai_load_info", { [] remoteExec [
 mapX addAction [localize "STR_antistasi_actions_move_this_asset", A3A_fnc_moveHQObject,nil,0,false,true,"","(_this == theBoss)", 4];
 
 [] spawn A3A_fnc_unitTraits;
-createDialog "TESTGUI";
+createDialog "InitMessage";
 
 // Get list of buildable objects, has map (and template?) dependency
 call A3A_fnc_initBuildableObjects;

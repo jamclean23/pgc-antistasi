@@ -82,7 +82,9 @@ if (_addons isNotEqualTo []) exitWith {
         localize "STR_A3AU_init_mods_warning_text", lineBreak, _addonText
     ];
 
-    [_text, localize "STR_A3AU_init_mods_warning_header"] call A3U_fnc_popup;
+    // [_text, localize "STR_A3AU_init_mods_warning_header"] call A3U_fnc_popup;
+    diag_log "**** CONFLICTING MODS DETECTED ****";
+    diag_log _text;
 
     _addons
 };

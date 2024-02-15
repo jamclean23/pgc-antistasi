@@ -1,11 +1,16 @@
 
 
-class TESTGUI: SimpleMenuBigger {
+class InitMessage: SimpleMenuBigger {
 
 	idd = 10012;
 
 
 	class controls {
+		class title: SimpleTitle
+		{
+			idc = -1;
+			text = "PGC ANTISTASI";
+		};
 		class button_01: RscButton
 		{
 			idc = 1600;
