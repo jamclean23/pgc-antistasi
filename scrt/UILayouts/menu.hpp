@@ -683,15 +683,15 @@ class commanderComm: SimpleMenuBigger
 			action = "if (player isEqualTo theBoss) then {closeDialog 0; [] spawn A3A_fnc_squadRecruit; } else {[localize 'STR_antistasi_dialogs_recruit_squad_title', localize 'STR_generic_commander_only'] call A3A_fnc_customHint;};";
 		};
 
-		class l2Button: SimpleButton
-		{
-			idc = -1;
-			text = $STR_antistasi_dialogs_rally_point_title;
-			x = 0.257187 * safezoneW + safezoneX;
-			y = 0.388 * safezoneH + safezoneY;
-			tooltip = $STR_antistasi_dialogs_add_rally_point_tooltip;
-			action = "if (player isEqualTo theBoss) then {closeDialog 0; [] call SCRT_fnc_rally_toggleRallyPoint;} else {[localize 'STR_antistasi_dialogs_rally_point_title', localize 'STR_generic_commander_only'] call A3A_fnc_customHint;};";
-		};
+		// class l2Button: SimpleButton
+		// {
+		// 	idc = -1;
+		// 	text = $STR_antistasi_dialogs_rally_point_title;
+		// 	x = 0.257187 * safezoneW + safezoneX;
+		// 	y = 0.388 * safezoneH + safezoneY;
+		// 	tooltip = $STR_antistasi_dialogs_add_rally_point_tooltip;
+		// 	action = "if (player isEqualTo theBoss) then {closeDialog 0; [] call SCRT_fnc_rally_toggleRallyPoint;} else {[localize 'STR_antistasi_dialogs_rally_point_title', localize 'STR_generic_commander_only'] call A3A_fnc_customHint;};";
+		// };
 
 		class l3Button: SimpleButton
 		{

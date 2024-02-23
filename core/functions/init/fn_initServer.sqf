@@ -383,7 +383,7 @@ if(A3A_hasACE) then
                     deleteMarker rallyPointMarker;
                     deleteMarker "RallyPointMarker";
                     publicVariable "rallyPointMarker";
-                    [petros, "support", "Spawn Beacon Removed"] remoteExec ["A3A_fnc_commsMP", 0]; 
+                    // [petros, "support", "Spawn Beacon Removed"] remoteExec ["A3A_fnc_commsMP", 0]; 
                 };
 
                 // Remove the moving marker
@@ -427,7 +427,7 @@ if(A3A_hasACE) then
                         publicVariable "isRallyPointPlaced";
 
                         petros sideRadio "SentGenBaseUnlockRespawn";
-                        [petros, "support", localize "STR_dialogs_RP_success"] remoteExec ["A3A_fnc_commsMP", 0]; 
+                        // [petros, "support", localize "STR_dialogs_RP_success"] remoteExec ["A3A_fnc_commsMP", 0]; 
                     };
                 } else {
                     // Med vehicle is moving
@@ -451,7 +451,7 @@ if(A3A_hasACE) then
                         deleteMarker rallyPointMarker;
                         deleteMarker "RallyPointMarker";
                         publicVariable "rallyPointMarker";
-                        [petros, "support", "Spawn Beacon Removed"] remoteExec ["A3A_fnc_commsMP", 0]; 
+                        // [petros, "support", "Spawn Beacon Removed"] remoteExec ["A3A_fnc_commsMP", 0]; 
                     };
 
                     // Update markerAlpha

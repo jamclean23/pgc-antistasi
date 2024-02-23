@@ -88,6 +88,14 @@ if (vehicle player != player && {driver vehicle player != player}) exitWith {
 	[localize "STR_A3A_Dialogs_fast_travel_header", localize "STR_A3A_Dialogs_fast_travel_only_drivers"] call SCRT_fnc_misc_deniedHint;
 };
 
+// Check if player in medical vehicle
+_vehClass = typeOf vehicle player;
+_medVehs = A3A_faction_reb get "vehiclesMedical";
+
+if (_vehClass in _medVehs) exitWith {
+	[localize "STR_A3A_Dialogs_fast_travel_header", "Can't fast travel a mobile respawn."] call SCRT_fnc_misc_deniedHint;
+};
+
 if (_positionTel isEqualTo []) exitWith {
 	[localize "STR_A3A_Dialogs_fast_travel_header", localize "STR_A3A_Dialogs_fast_travel_missclick"] call SCRT_fnc_misc_deniedHint;
 };
