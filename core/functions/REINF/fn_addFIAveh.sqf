@@ -27,7 +27,7 @@ if (_resourcesFIA < _cost) exitWith {
 	[localize "STR_A3A_addFiaVeh_header", format [localize "STR_A3AP_error_veh_not_enough_money_generic", _cost, A3A_faction_civ get "currencySymbol"]] call A3A_fnc_customHint;
 };
 
-// TEST ZONE ===========================
+// SPAWN VEH HANDLING ===========================
 
 // // Check if _typeVehX is equal to any value in the array returned by (A3A_faction_reb get 'vehiclesMedical')
 _medicalVehicles = A3A_faction_reb get "vehiclesMedical";
@@ -80,10 +80,10 @@ if (_typeVehX in _medicalVehicles) then {
 };
 
 if (_medVehExists) exitWith {
-		["Garage", "Only one spawn vehicle allowed. Blow up your old one to buy another."] call A3A_fnc_customHint;
+		["Garage", "Only one spawn vehicle allowed.&lt;br/&gt;Blow up your old one to buy another."] call A3A_fnc_customHint;
 };
 
-// TEST ZONE ===========================
+// ===============================
 
 private _nearestMarker = [markersX select {sidesX getVariable [_x,sideUnknown] == teamPlayer},player] call BIS_fnc_nearestPosition;
 

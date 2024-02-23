@@ -37,7 +37,6 @@ private _fnc_placed = {
     };
 
     _unit setVariable ["A3A_spawnItem_cooldown", time + 15];
-
     _item call A3A_fnc_initObject;
 };
 
@@ -65,7 +64,6 @@ if !("place" in _flags) exitWith
     if (_position isEqualTo []) then {_position = getPosATL _unit};
     private _item = _itemClass createVehicle _position;
     _item allowDamage false;            // what, permanent? TODO: make this an item flag?
-
     [_item, _unit, _price, _flags] call _fnc_placed;
 };
 

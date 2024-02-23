@@ -40,7 +40,7 @@ _ammobox setDir 115;
 rallyPointMarker = createMarker ["RallyPointMarker", _rootPos];
 rallyPointMarker setMarkerType "hd_join";
 rallyPointMarker setMarkerSize [1, 1];
-rallyPointMarker setMarkerText (format [localize "STR_marker_RP", str rallyPointSpawnCount]);
+rallyPointMarker setMarkerText ("Mobile Respawn");
 rallyPointMarker setMarkerColor "colorIndependent";
 rallyPointMarker setMarkerAlpha 1;
 sidesX setVariable [rallyPointMarker,teamPlayer,true];
@@ -49,5 +49,5 @@ publicVariable "rallyPointMarker";
 rallyProps append [_backpack1, _backpack2, _bag, _ammobox];
 publicVariable "rallyProps";
 
-rallyPointRoot setVariable ["remainingTravels", rallyPointSpawnCount, true];
+rallyPointRoot setVariable ["remainingTravels", 100000000, true];
 publicVariable "rallyPointRoot";

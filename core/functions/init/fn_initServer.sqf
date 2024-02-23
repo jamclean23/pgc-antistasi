@@ -338,4 +338,139 @@ if(A3A_hasACE) then
     }] call CBA_fnc_addEventHandler;
 };
 
+// Start Med Vehicle Listener
+
+[] spawn {
+
+    // Initialize rally point variable
+    isRallyPointPlaced = true; 
+    publicVariable "isRallyPointPlaced";
+    publicVariable "MovingMarker";
+
+    // Start the listener
+    while { true } do {
+        diag_log "$$$$ LISTENING";
+        _medicalVehicles = A3A_faction_reb get "vehiclesMedical";
+        _medEntities = entities [_medicalVehicles, [], false, false];
+
+        _ownedMedicalVehicles = [];
+        for "_i" from 0 to count _medEntities - 1 do {
+        _side = _medEntities#_i getVariable "ownerside";
+        if (str(_side) == "GUER") then {
+        _ownedMedicalVehicles pushback _medEntities#_i;
+        };
+        };
+
+        if (count _ownedMedicalVehicles == 0) then {
+                // No owned med vehicles
+                diag_log "No med vehicles";
+                // Delete the rally point
+                if (isRallyPointPlaced == true) then {
+                    isRallyPointPlaced = false;
+                    publicVariable "isRallyPointPlaced";
+
+                    {
+                        deleteVehicle _x;
+                    } forEach rallyProps;
+
+                    rallyProps = nil;
+                    publicVariable "rallyProps";
+
+                    deleteVehicle rallyPointRoot;
+                    rallyPointRoot = nil;
+                    publicVariable "rallyPointRoot";
+
+                    deleteMarker rallyPointMarker;
+                    deleteMarker "RallyPointMarker";
+                    publicVariable "rallyPointMarker";
+                    [petros, "support", "Spawn Beacon Removed"] remoteExec ["A3A_fnc_commsMP", 0]; 
+                };
+
+                // Remove the moving marker
+                deleteMarker "MovingMarker";
+                
+        } else {
+            _medVeh = _ownedMedicalVehicles#0;
+            diag_log _medVeh;
+            if (typeName _medVeh == "OBJECT") then {
+                _speed = speed _medVeh;
+                diag_log _speed;
+                if (_speed == 0) then {
+                    // Med vehicle is stopped
+                    diag_log "Med vic stopped";
+
+                    if (isRallyPointPlaced == false) then {
+                        // Remove moving marker
+                        deleteMarker "MovingMarker";
+
+                        diag_log "Placing Rally";
+                        // Place the Rally point
+                        _medicalVehicles = A3A_faction_reb get "vehiclesMedical";
+                        _medEntities = entities [_medicalVehicles, [], false, false];
+
+                        _ownedMedicalVehicles = [];
+                        for "_i" from 0 to count _medEntities - 1 do {
+                        _side = _medEntities#_i getVariable "ownerside";
+                        if (str(_side) == "GUER") then {
+                        _ownedMedicalVehicles pushback _medEntities#_i;
+                        };
+                        };
+
+                        _spawnVic = _ownedMedicalVehicles#0;
+
+                        _posWorld = getPos _spawnVic; 
+
+
+                        [_posWorld] call SCRT_fnc_rally_placeRallyPoint;
+
+                        isRallyPointPlaced = true; 
+                        publicVariable "isRallyPointPlaced";
+
+                        petros sideRadio "SentGenBaseUnlockRespawn";
+                        [petros, "support", localize "STR_dialogs_RP_success"] remoteExec ["A3A_fnc_commsMP", 0]; 
+                    };
+                } else {
+                    // Med vehicle is moving
+                    diag_log "Med vic moving";
+                    // Delete the rally point
+                    if (isRallyPointPlaced == true) then {
+                        isRallyPointPlaced = false;
+                        publicVariable "isRallyPointPlaced";
+
+                        {
+                            deleteVehicle _x;
+                        } forEach rallyProps;
+
+                        rallyProps = nil;
+                        publicVariable "rallyProps";
+
+                        deleteVehicle rallyPointRoot;
+                        rallyPointRoot = nil;
+                        publicVariable "rallyPointRoot";
+
+                        deleteMarker rallyPointMarker;
+                        deleteMarker "RallyPointMarker";
+                        publicVariable "rallyPointMarker";
+                        [petros, "support", "Spawn Beacon Removed"] remoteExec ["A3A_fnc_commsMP", 0]; 
+                    };
+
+                    // Update markerAlpha
+                    deleteMarker "MovingMarker";
+                    MovingMarker = createMarker ["MovingMarker", getPos player]; 
+                    MovingMarker setMarkerType "hd_dot"; 
+                    MovingMarker setMarkerSize [1, 1]; 
+                    MovingMarker setMarkerText ("Spawn moving"); 
+                    MovingMarker setMarkerColor "colorYellow"; 
+                    MovingMarker setMarkerAlpha 1;
+                    publicVariable "MovingMarker";
+                };
+            };
+        };
+
+        sleep 3;
+    };
+};
+
+
+
 Info("initServer completed");

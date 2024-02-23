@@ -1,7 +1,7 @@
 ["attributesVehicles", [
     // Spawn vehicle
     ["CUP_I_LR_Ambulance_RACS", ["rebCost", 0]],
-    
+
     // Assault boat
     ["I_G_Boat_Transport_01_F", ["rebCost", 150]],
 
