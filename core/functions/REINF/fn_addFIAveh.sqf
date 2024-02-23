@@ -27,6 +27,57 @@ if (_resourcesFIA < _cost) exitWith {
 	[localize "STR_A3A_addFiaVeh_header", format [localize "STR_A3AP_error_veh_not_enough_money_generic", _cost, A3A_faction_civ get "currencySymbol"]] call A3A_fnc_customHint;
 };
 
+
+// Check for medical ===========================
+
+
+// // Check if _typeVehX is equal to any value in the array returned by (A3A_faction_reb get 'vehiclesMedical')
+_medicalVehicles = A3A_faction_reb get "vehiclesMedical";
+
+
+_medVehExists = false;
+
+// Check if _typeVehX is equal to any value in the array _medicalVehicles
+if (_typeVehX in _medicalVehicles) then {
+    // Medical vehicle handling
+    // ["DEBUG", "Medical"] call A3A_fnc_customHint;
+
+
+	// See if selected vehicle on the map
+	_spawnedVehs = player nearEntities [_typeVehX, 10000000];
+	_mapMedCount = count _spawnedVehs;
+	if (_mapMedCount > 0) then {
+		_medVehExists = true;
+	};
+
+	// See if selected vehicle in garage
+	_garageArray = HR_GRG_Vehicles;
+	_garageVehs = [];
+
+	for "_i" from 0 to count _garageArray - 1 do {
+    _catHash = _garageArray select _i;
+    _allKeys = keys _catHash;
+
+		for "_j" from 0 to count _allKeys - 1 do {
+			_cat = _garageArray#_i;
+			_vehicle = _cat get _allKeys#_j;
+			_classname = _vehicle select 1;
+			_garageVehs pushBack _classname;
+		};
+	};
+
+	if (_typeVehX in _garageVehs) then {
+		_medVehExists = true;
+	};
+};
+
+if (_medVehExists) exitWith {
+		["Garage", "You can only have 1 spawn vehicle."] call A3A_fnc_customHint;
+};
+
+// Check for medical ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
 private _nearestMarker = [markersX select {sidesX getVariable [_x,sideUnknown] == teamPlayer},player] call BIS_fnc_nearestPosition;
 
 private _extraMessage =	format [localize "STR_veh_callback_select_veh_generic", _cost,  A3A_faction_civ get "currencySymbol"];
