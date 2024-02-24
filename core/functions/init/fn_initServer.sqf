@@ -454,9 +454,9 @@ if(A3A_hasACE) then
                         // [petros, "support", "Spawn Beacon Removed"] remoteExec ["A3A_fnc_commsMP", 0]; 
                     };
 
-                    // Update markerAlpha
+                    // Update marker
                     deleteMarker "MovingMarker";
-                    MovingMarker = createMarker ["MovingMarker", getPos player]; 
+                    MovingMarker = createMarker ["MovingMarker", getPos _medVeh]; 
                     MovingMarker setMarkerType "hd_dot"; 
                     MovingMarker setMarkerSize [1, 1]; 
                     MovingMarker setMarkerText ("Spawn moving"); 

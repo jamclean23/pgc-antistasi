@@ -19,6 +19,8 @@ private _vehiclesLightArmed = ["I_G_Offroad_01_armed_F"];
 private _vehiclesAt = ["I_G_Offroad_01_AT_F"];
 ["vehiclesTruck", ["I_G_Van_01_transport_F"]] call _fnc_saveToTemplate;
 private _vehicleAA = [];
+["vehiclesMedical", ["I_E_Truck_02_Medical_F"]] call _fnc_saveToTemplate;
+
 
 ["vehiclesBoat", ["I_C_Boat_Transport_02_F"]] call _fnc_saveToTemplate;
 

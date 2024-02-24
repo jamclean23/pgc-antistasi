@@ -80,7 +80,7 @@ if (_typeVehX in _medicalVehicles) then {
 };
 
 if (_medVehExists) exitWith {
-		["Garage", "Only one spawn vehicle allowed.&lt;br/&gt;Blow up your old one to buy another."] call A3A_fnc_customHint;
+		["Garage", "Only one spawn vehicle allowed. Blow up your old one to buy another."] call A3A_fnc_customHint;
 };
 
 // ===============================
