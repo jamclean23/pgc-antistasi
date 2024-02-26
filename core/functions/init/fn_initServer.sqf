@@ -350,15 +350,17 @@ if(A3A_hasACE) then
     // Start the listener
     while { true } do {
         diag_log "$$$$ LISTENING";
+
         _medicalVehicles = A3A_faction_reb get "vehiclesMedical";
         _medEntities = entities [_medicalVehicles, [], false, false];
 
         _ownedMedicalVehicles = [];
         for "_i" from 0 to count _medEntities - 1 do {
-        _side = _medEntities#_i getVariable "ownerside";
-        if (str(_side) == "GUER") then {
-        _ownedMedicalVehicles pushback _medEntities#_i;
-        };
+            _side = _medEntities#_i getVariable "ownerside";
+            _currentMedVeh = _medEntities#_i;
+            if (str(_side) == "GUER" && (damage _currentMedVeh < 1)) then {
+                _ownedMedicalVehicles pushback _medEntities#_i;
+            };
         };
 
         if (count _ownedMedicalVehicles == 0) then {
@@ -405,20 +407,9 @@ if(A3A_hasACE) then
 
                         diag_log "Placing Rally";
                         // Place the Rally point
-                        _medicalVehicles = A3A_faction_reb get "vehiclesMedical";
-                        _medEntities = entities [_medicalVehicles, [], false, false];
 
-                        _ownedMedicalVehicles = [];
-                        for "_i" from 0 to count _medEntities - 1 do {
-                        _side = _medEntities#_i getVariable "ownerside";
-                        if (str(_side) == "GUER") then {
-                        _ownedMedicalVehicles pushback _medEntities#_i;
-                        };
-                        };
 
-                        _spawnVic = _ownedMedicalVehicles#0;
-
-                        _posWorld = getPos _spawnVic; 
+                        _posWorld = getPos _medVeh; 
 
 
                         [_posWorld] call SCRT_fnc_rally_placeRallyPoint;
