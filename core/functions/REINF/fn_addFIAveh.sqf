@@ -48,7 +48,7 @@ if (_typeVehX in _medicalVehicles) then {
 	{	
 		_veh = _spawnedVehs select _forEachIndex;
 		_vehOwner = _x getVariable "ownerside";
-		if (str(_vehOwner) == "GUER") then {
+		if (str(_vehOwner) == "GUER"&& (damage _veh < 1)) then {
 			_spawnedVehsPlayerOwned pushback _veh;
 		};
 	} forEach _spawnedVehs; 
