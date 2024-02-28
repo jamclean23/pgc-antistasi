@@ -54,7 +54,19 @@
 
     ["CUP_B_TOW_TriPod_USMC", 1000, "STATICAT", {tierWar > 3}],
     ["CUP_B_AGS_CDF", 1000, "STATICMG", {tierWar > 3}],
-    // Sam sites not working
+    ["B_HMG_01_high_F", 1000, "STATICMG", {tierWar > 3}],
+    ["B_HMG_01_F", 1000, "STATICMG", {tierWar > 3}],
+    ["B_GMG_01_high_F", 1500, "STATICMG", {tierWar > 3}],
+    ["B_GMG_01_F", 1500, "STATICMG", {tierWar > 3}],
+    ["B_static_AA_F", 1500, "STATICAA", {tierWar > 3}],
+    ["B_static_AT_F", 1500, "STATICAT", {tierWar > 3}],
+    ["CUP_B_Igla_AA_pod_CDF", 1500, "STATICAA", {tierWar > 3}],
+    ["CUP_B_D30_AT_CDF", 1500, "STATICAT", {tierWar > 3}],
+
+
+    
+
+    // Sam sites not working?
     // ["B_Radar_System_01_F", 25000, "STATICMG", {tierWar > 3}],
     // ["B_SAM_System_03_F", 25000, "STATICMG", {tierWar > 3}],
 
@@ -71,7 +83,7 @@
     ["CUP_B_BRDM2_HQ_CZ", 2000, "CAR", {true}],
     ["CUP_B_BRDM2_CDF", 2000, "CAR", {true}],
 
-    // Huron containers
+    // Huron containers can't be garaged, will disappear on restart
     // ["B_Slingload_01_Repair_F", 4000, "TRUCK", {true}],
     // ["B_Slingload_01_Fuel_F", 4000, "TRUCK", {true}],
     // ["B_Slingload_01_Ammo_F", 4000, "TRUCK", {true}],
@@ -122,8 +134,13 @@
     // Tanks
     // Abrams
     ["CUP_B_M1A2C_TUSK_II_NATO", 18000, "TANK", {tierWar > 4 && {{sidesX getVariable [_x,sideUnknown] isEqualTo teamPlayer} count (milbases + airportsX) > 0}}],
+    // Slammer
+    ["B_T_MBT_01_cannon_F", 18000, "TANK", {tierWar > 4 && {{sidesX getVariable [_x,sideUnknown] isEqualTo teamPlayer} count (milbases + airportsX) > 0}}],
+    // Slammer UP
+    ["B_T_MBT_01_TUSK_F", 18000, "TANK", {tierWar > 4 && {{sidesX getVariable [_x,sideUnknown] isEqualTo teamPlayer} count (milbases + airportsX) > 0}}],
     // T34
     ["CUP_O_T34_TKA", 10000, "TANK", {tierWar > 4 && {{sidesX getVariable [_x,sideUnknown] isEqualTo teamPlayer} count (milbases + airportsX) > 0}}],
+
 
 
     // == BOATS
