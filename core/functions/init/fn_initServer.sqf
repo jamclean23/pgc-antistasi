@@ -395,9 +395,27 @@ if(A3A_hasACE) then
             _medVeh = _ownedMedicalVehicles#0;
             diag_log _medVeh;
             if (typeName _medVeh == "OBJECT") then {
-                _speed = speed _medVeh;
-                diag_log _speed;
-                if (_speed == 0) then {
+
+                // Check if spawn vic is moving
+                // Setup pos now and pos last time
+                _spawnPosNow = getPos _medVeh;
+
+                if (isNil "lastSpawnPos") then {
+                    lastSpawnPos = _spawnPosNow;
+                    publicVariable "lastSpawnPos";
+                };
+
+                // Get the distance between the two points
+                _distance = lastSpawnPos distance _spawnPosNow;
+
+
+                // Set the new med position to last
+                lastSpawnPos = _spawnPosNow;
+                publicVariable "lastSpawnPos";
+
+                _distance;
+
+                if (_distance == 0) then {
                     // Med vehicle is stopped
                     diag_log "Med vic stopped";
 
